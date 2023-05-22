@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arraial do 12 - Countdown Timer</title>
+  <style>
+    /* CSS Styles */
+    body {
+      background-color: blue;
+    }
+
+    .countdown {
+      font-size: 48px;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .countdown:before,
+    .countdown:after {
+      content: "";
+      display: block;
+      height: 4px;
+      background-color: white;
+    }
+
+    .countdown:before {
+      margin-bottom: 10px;
+    }
+
+    .countdown:after {
+      margin-top: 10px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; color: white;">Arraial do 12</h1>
+  <div class="countdown" id="countdown">Faltam:</div>
+
+  <script>
+    // JavaScript Code
+    // Set the target date and time for the countdown
+    const targetDate = new Date("2023-06-17T18:00:00").getTime();
+
+    // Update the countdown every second
+    setInterval(() => {
+      const now = new Date().getTime();
+      const timeRemaining = targetDate - now;
+
+      // Calculate remaining days, hours, minutes, and seconds
+      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      document.getElementById("countdown").innerHTML = `Faltam: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+  </script>
+</body>
+</html>
